@@ -1,6 +1,6 @@
 package com.pjt.insurance.user.model.dto.response;
 
-import com.ssafy.fullerting.user.model.entity.MemberProfile;
+import com.pjt.insurance.user.model.entity.MemberProfile;
 import lombok.*;
 
 @AllArgsConstructor

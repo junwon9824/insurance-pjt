@@ -1,6 +1,5 @@
 package com.pjt.insurance.user.repository;
-import com.ssafy.fullerting.user.model.entity.Member;
-import com.ssafy.fullerting.user.model.entity.MemberProfile;
+import com.pjt.insurance.user.model.entity.MemberProfile;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 import java.util.Optional;

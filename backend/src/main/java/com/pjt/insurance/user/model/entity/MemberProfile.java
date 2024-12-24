@@ -1,6 +1,6 @@
 package com.pjt.insurance.user.model.entity;
 
-import com.ssafy.fullerting.user.model.dto.response.UserResponse;
+import com.pjt.insurance.user.model.dto.response.UserResponse;
 import jakarta.persistence.*;
 import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
