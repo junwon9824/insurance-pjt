@@ -1,10 +1,9 @@
 package com.pjt.insurance.user.controller;
 
-import com.ssafy.fullerting.global.utils.MessageUtils;
-import com.ssafy.fullerting.user.model.dto.request.UserRegisterRequest;
-import com.ssafy.fullerting.user.model.dto.request.UserTownRequest;
-import com.ssafy.fullerting.user.model.dto.request.UserUpdateRequest;
-import com.ssafy.fullerting.user.service.UserService;
+import com.pjt.insurance.global.utils.MessageUtils;
+import com.pjt.insurance.user.model.dto.request.UserRegisterRequest;
+import com.pjt.insurance.user.model.dto.request.UserUpdateRequest;
+import com.pjt.insurance.user.service.UserService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
@@ -52,17 +51,7 @@ public class UserController {
     }
 
 
-    @PostMapping("/profile")
-    @Operation(summary = "유저 프로필 사진 업로드", description = "유저의 프로필 사진을 업로드한다")
-    public ResponseEntity<MessageUtils> uploadProfileImg(MultipartFile multipartFile) {
-        return ResponseEntity.ok().body(MessageUtils.success(userService.uploadThumbAndSaveDB(multipartFile)));
-    }
 
 
-    @PatchMapping("/town")
-    @Operation(summary = "유저 동네정보 저장", description = "유저의 동네정보를 저장한다.")
-    public ResponseEntity<MessageUtils> updatetown(@RequestBody @Valid UserTownRequest userTownRequest) {
-        userService.updatetown(userTownRequest);
-        return ResponseEntity.ok().body(MessageUtils.success());
-    }
+
 }
