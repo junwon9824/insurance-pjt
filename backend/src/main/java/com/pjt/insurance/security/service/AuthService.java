@@ -1,12 +1,7 @@
 package com.pjt.insurance.security.service;
 
-import com.ssafy.fullerting.security.model.dto.request.LoginRequest;
-import com.ssafy.fullerting.security.model.dto.response.IssuedToken;
-import com.ssafy.fullerting.security.model.entity.CustomAuthenticationToken;
-import com.ssafy.fullerting.user.exception.UserErrorCode;
-import com.ssafy.fullerting.user.exception.UserException;
-import com.ssafy.fullerting.user.model.entity.MemberProfile;
-import com.ssafy.fullerting.user.repository.MemberRepository;
+import com.pjt.insurance.security.model.dto.response.IssuedToken;
+import com.pjt.insurance.user.repository.MemberRepository;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

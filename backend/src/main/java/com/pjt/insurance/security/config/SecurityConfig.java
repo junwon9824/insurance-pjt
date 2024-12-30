@@ -1,11 +1,9 @@
 package com.pjt.insurance.security.config;
 
 
-import com.ssafy.fullerting.security.Filter.JwtValidationFilter;
-import com.ssafy.fullerting.security.handler.AuthFailureHandler;
-import com.ssafy.fullerting.security.handler.ExceptionHandlerFilter;
-import com.ssafy.fullerting.security.handler.OAuthSuccessHandler;
-import com.ssafy.fullerting.security.service.OAuthService;
+import com.pjt.insurance.security.Filter.JwtValidationFilter;
+import com.pjt.insurance.security.handler.*;
+import com.pjt.insurance.security.service.OAuthService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

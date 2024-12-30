@@ -1,7 +1,7 @@
 package com.pjt.insurance.security.handler;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.ssafy.fullerting.global.utils.MessageUtils;
+import com.pjt.insurance.global.utils.MessageUtils;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;

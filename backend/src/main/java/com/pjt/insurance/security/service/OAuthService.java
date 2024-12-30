@@ -1,9 +1,8 @@
 package com.pjt.insurance.security.service;
 
-import com.ssafy.fullerting.security.model.entity.OAuthAttributes;
-import com.ssafy.fullerting.user.model.entity.Member;
-import com.ssafy.fullerting.user.model.entity.MemberProfile;
-import com.ssafy.fullerting.user.repository.MemberRepository;
+import com.pjt.insurance.security.model.entity.OAuthAttributes;
+import com.pjt.insurance.user.model.entity.MemberProfile;
+import com.pjt.insurance.user.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.oauth2.client.userinfo.DefaultOAuth2UserService;

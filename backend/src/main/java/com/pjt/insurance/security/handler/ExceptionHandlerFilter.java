@@ -1,7 +1,6 @@
 package com.pjt.insurance.security.handler;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.ssafy.fullerting.global.utils.MessageUtils;
 import io.jsonwebtoken.ExpiredJwtException;
 import io.jsonwebtoken.MalformedJwtException;
 import io.jsonwebtoken.SignatureException;
@@ -17,7 +16,6 @@ import org.springframework.web.filter.OncePerRequestFilter;
 
 import java.io.IOException;
 
-import static com.ssafy.fullerting.security.exception.JwtErrorCode.*;
 
 @Slf4j
 @Configuration

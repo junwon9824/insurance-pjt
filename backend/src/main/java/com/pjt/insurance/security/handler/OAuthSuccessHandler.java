@@ -1,7 +1,9 @@
 package com.pjt.insurance.security.handler;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.pjt.insurance.security.model.dto.response.IssuedToken;
 import com.pjt.insurance.security.service.TokenService;
+import com.pjt.insurance.user.model.entity.MemberProfile;
 import com.pjt.insurance.user.repository.MemberRepository;
 import com.pjt.insurance.user.service.UserService;
 import jakarta.servlet.ServletException;
