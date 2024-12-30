@@ -5,6 +5,7 @@ import com.pjt.insurance.security.model.dto.response.IssuedToken;
 import com.pjt.insurance.security.model.entity.CustomAuthenticationToken;
 import com.pjt.insurance.user.exception.UserErrorCode;
 import com.pjt.insurance.user.exception.UserException;
+import com.pjt.insurance.user.model.entity.MemberProfile;
 import com.pjt.insurance.user.repository.MemberRepository;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;

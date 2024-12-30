@@ -1,0 +1,11 @@
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/insurance?useSSL=false&allowPublicKeyRetrieval=true
+    username: root
+    password: ssafy
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: update  # 데이터베이스 스키마 자동 생성 전략
+    show-sql: true      # 실행되는 SQL 쿼리 출력 여부
