@@ -1,6 +1,7 @@
 package com.pjt.insurance.security.model.entity;
 
-import com.ssafy.fullerting.user.model.entity.MemberProfile;
+
+import com.pjt.insurance.user.model.entity.MemberProfile;
 
 import java.util.Arrays;
 import java.util.Map;

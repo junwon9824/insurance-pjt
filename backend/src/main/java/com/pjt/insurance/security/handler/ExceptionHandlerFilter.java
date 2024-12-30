@@ -1,6 +1,10 @@
 package com.pjt.insurance.security.handler;
 
+
+
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.pjt.insurance.global.utils.MessageUtils;
+import com.pjt.insurance.security.exception.JwtErrorCode;
 import io.jsonwebtoken.ExpiredJwtException;
 import io.jsonwebtoken.MalformedJwtException;
 import io.jsonwebtoken.SignatureException;
@@ -8,6 +12,7 @@ import io.jsonwebtoken.UnsupportedJwtException;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpStatus;
@@ -17,9 +22,13 @@ import org.springframework.web.filter.OncePerRequestFilter;
 import java.io.IOException;
 
 
+
 @Slf4j
 @Configuration
+@RequiredArgsConstructor
+
 public class ExceptionHandlerFilter extends OncePerRequestFilter {
+
     @Override
     protected void doFilterInternal(
             HttpServletRequest request,
@@ -30,16 +39,16 @@ public class ExceptionHandlerFilter extends OncePerRequestFilter {
             filterChain.doFilter(request, response);
         } catch (MalformedJwtException e) {
             log.error("exception : 잘못된 엑세스 토큰 시그니처");
-            setErrorResponse(response, TOKEN_SIGNATURE_ERROR.getHttpStatus(), TOKEN_SIGNATURE_ERROR.getMessage());
+            setErrorResponse(response, JwtErrorCode.TOKEN_SIGNATURE_ERROR.getHttpStatus(), JwtErrorCode.TOKEN_SIGNATURE_ERROR.getMessage());
         } catch (ExpiredJwtException e) {
             log.error("exception : 엑세스 토큰 기간 만료");
-            setErrorResponse(response, EXPIRED_TOKEN.getHttpStatus(), EXPIRED_TOKEN.getMessage());
+            setErrorResponse(response, JwtErrorCode.EXPIRED_TOKEN.getHttpStatus(), JwtErrorCode.EXPIRED_TOKEN.getMessage());
         } catch (UnsupportedJwtException | SignatureException e) {
             log.error("exception : 지원되지 않는 엑세스 토큰");
-            setErrorResponse(response, NOT_SUPPORT_TOKEN.getHttpStatus(), NOT_SUPPORT_TOKEN.getMessage());
+            setErrorResponse(response, JwtErrorCode.NOT_SUPPORT_TOKEN.getHttpStatus(), JwtErrorCode.NOT_SUPPORT_TOKEN.getMessage());
         } catch (IllegalArgumentException e) {
             log.error("exception : 잘못된 엑세스 토큰");
-            setErrorResponse(response, INVALID_TOKEN.getHttpStatus(), INVALID_TOKEN.getMessage());
+            setErrorResponse(response, JwtErrorCode.INVALID_TOKEN.getHttpStatus(), JwtErrorCode.INVALID_TOKEN.getMessage());
         } catch (Exception e) {
             log.error("exception : {}", e);
             e.printStackTrace();

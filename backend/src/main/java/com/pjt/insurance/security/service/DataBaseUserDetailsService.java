@@ -1,5 +1,7 @@
 package com.pjt.insurance.security.service;
 
+import com.pjt.insurance.user.exception.UserErrorCode;
+import com.pjt.insurance.user.exception.UserException;
 import com.pjt.insurance.user.model.entity.MemberProfile;
 import com.pjt.insurance.user.repository.MemberRepository;
 import lombok.AllArgsConstructor;

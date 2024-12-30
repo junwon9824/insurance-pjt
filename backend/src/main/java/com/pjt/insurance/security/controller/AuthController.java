@@ -1,9 +1,9 @@
 package com.pjt.insurance.security.controller;
 
-import com.ssafy.fullerting.global.utils.MessageUtils;
-import com.ssafy.fullerting.security.model.dto.request.LoginRequest;
-import com.ssafy.fullerting.security.service.AuthService;
-import com.ssafy.fullerting.user.model.dto.request.RefreshRequest;
+import com.pjt.insurance.global.utils.MessageUtils;
+import com.pjt.insurance.security.model.dto.request.LoginRequest;
+import com.pjt.insurance.security.service.AuthService;
+import com.pjt.insurance.user.model.dto.request.RefreshRequest;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;

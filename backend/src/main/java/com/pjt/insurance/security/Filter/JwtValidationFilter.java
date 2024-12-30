@@ -1,5 +1,6 @@
 package com.pjt.insurance.security.Filter;
 
+import com.pjt.insurance.security.model.entity.CustomAuthenticationToken;
 import com.pjt.insurance.security.util.JwtUtils;
 import com.pjt.insurance.user.repository.MemberRepository;
 import io.jsonwebtoken.Claims;
