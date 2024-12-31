@@ -9,3 +9,9 @@ spring:
     hibernate:
       ddl-auto: update  # 데이터베이스 스키마 자동 생성 전략
     show-sql: true      # 실행되는 SQL 쿼리 출력 여부
+
+  jwt:
+    access: A1b$cD3e!FgH7#jKlMn      # 접근 토큰 비밀 키
+    refresh: 9xYz@8LpQr#4tUvW1e!2     # 리프레시 토큰 비밀 키
+    accesstime: 3600 # 1시간
+    refreshtime: 86400 # 24시간
