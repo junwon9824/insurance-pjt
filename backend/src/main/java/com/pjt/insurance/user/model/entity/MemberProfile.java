@@ -109,7 +109,6 @@ public class MemberProfile implements UserDetails {
                 .email((String) map.get("email"))
                 .nickname((String) map.get("nickname")) // 예시입니다. 실제 속성명에 맞게 조정 필요
                 .role("ROLE_MEMBER")
-                .rank("새싹")
                 .thumbnail((String) map.get("picture"))
                 .authProvider(((String) map.get("authProvider")).toUpperCase())
                 .build();

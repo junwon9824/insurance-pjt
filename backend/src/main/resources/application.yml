@@ -3,7 +3,7 @@ spring:
     url: jdbc:mysql://localhost:3306/insurance?useSSL=false&allowPublicKeyRetrieval=true
     username: root
     password: ssafy
-    driver-class-name: com.mysql.cj.jdbc.Driver
+    driver-class-name: com.mysql.cj.jdbc.Driver  # 드라이버 클래스 이름 명시
 
   jpa:
     hibernate:
@@ -13,7 +13,7 @@ spring:
   jwt:
     access: Qw3rTy!1@#$56789abcdefghijKLMNOP
     refresh: A1b2C3d4E5f6G7h8I9j0KLMNOPqrstuv
-    accesstime: 3600 # 1시간
+    accesstime: 86400 # 24시간
     refreshtime: 86400 # 24시간
 
   redis:

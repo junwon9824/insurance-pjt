@@ -6,7 +6,6 @@ import com.pjt.insurance.user.model.dto.request.UserRegisterRequest;
 import com.pjt.insurance.user.model.dto.request.UserUpdateRequest;
 import com.pjt.insurance.user.model.dto.response.UserResponse;
 import com.pjt.insurance.user.model.entity.MemberProfile;
-import com.pjt.insurance.user.model.entity.enums.UserRank;
 import com.pjt.insurance.user.model.entity.enums.UserRole;
 import com.pjt.insurance.user.repository.MemberRepository;
 import jakarta.transaction.Transactional;
@@ -24,16 +23,13 @@ public class UserService {
 
     private final MemberRepository userRepository;
     private final PasswordEncoder passwordEncoder;
-    String defaultThunmail = "https://fullerting-s3-v2.s3.ap-northeast-2.amazonaws.com/default_thumnail.svg";
 
     public MemberProfile createUserEntity(UserRegisterRequest userRegisterRequest) {
         return MemberProfile.builder()
                 .email(userRegisterRequest.getEmail())
                 .password(passwordEncoder.encode(userRegisterRequest.getPassword()))
-                .thumbnail(defaultThunmail)
                 .nickname(userRegisterRequest.getNickname())
                 .role(String.valueOf(UserRole.ROLE_MEMBER))
-                .rank(String.valueOf(UserRank.새싹))
                 .authProvider(userRegisterRequest.getAuthProvider())
                 .build();
     }
