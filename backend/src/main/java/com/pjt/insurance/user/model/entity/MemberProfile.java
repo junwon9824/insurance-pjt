@@ -1,5 +1,6 @@
 package com.pjt.insurance.user.model.entity;
 
+import com.pjt.insurance.insuranceproduct.model.entity.InsuranceProduct;
 import com.pjt.insurance.user.model.dto.response.UserResponse;
 import jakarta.persistence.*;
 import lombok.*;
@@ -11,6 +12,7 @@ import org.springframework.security.oauth2.core.user.OAuth2User;
 import java.time.LocalDate;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.List;
 import java.util.Map;
 
 @ToString
@@ -53,9 +55,9 @@ public class MemberProfile implements UserDetails {
     @Column(name = "user_provider", nullable = false, length = 20)
     private String authProvider;
 
-    // 보험 관련 필드
-    @Column(name = "insurance_product", length = 50)
-    private String insuranceProduct; // 가입한 보험 상품
+
+    @OneToMany(mappedBy = "memberProfile", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<InsuranceProduct> insuranceProducts; // 사용자가 가입한 보험 상품 목록
 
     // 메서드 설정
 

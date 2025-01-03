@@ -1,9 +1,8 @@
 package com.pjt.insurance.insuranceproduct.controller;
 
-import com.pjt.insurance.global.utils.MessageUtils;
-import com.pjt.insurance.insuranceproduct.model.dto.request.UserRegisterRequest;
-import com.pjt.insurance.insuranceproduct.model.dto.request.UserUpdateRequest;
-import com.pjt.insurance.insuranceproduct.service.UserService;
+import com.pjt.insurance.insuranceproduct.model.dto.request.InsuranceProductRequest;
+import com.pjt.insurance.insuranceproduct.model.dto.response.InsuranceProductResponse;
+import com.pjt.insurance.insuranceproduct.service.InsuranceProductService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
@@ -12,44 +11,49 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @Slf4j
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/v1/users")
-@Tag(name = "유저 기능 API", description = "유저와 관련된 기능 제공")
+@RequestMapping("/v1/products")
+@Tag(name = "보험 상품 API", description = "보험 상품과 관련된 기능 제공")
 public class InsuranceProductController {
-    private final UserService userService;
 
-    @PostMapping("/register")
-    @Operation(summary = "유저 회원가입", description = "이메일, 비밀번호, 닉네임을 입력받아 회원가입을 진행한다")
-    public ResponseEntity<MessageUtils> register(@Valid @RequestBody UserRegisterRequest userRegisterRequest) {
-        userService.registUser(userRegisterRequest);
-        log.info("[New User]: {}", userRegisterRequest.toString());
-        return ResponseEntity.ok().body(MessageUtils.success());
+    private final InsuranceProductService insuranceProductService;
+
+    @PostMapping
+    @Operation(summary = "보험 상품 등록", description = "새로운 보험 상품을 등록합니다.")
+    public ResponseEntity<InsuranceProductResponse> createInsuranceProduct(@Valid @RequestBody InsuranceProductRequest request) {
+        InsuranceProductResponse response = insuranceProductService.createInsuranceProduct(request);
+        return ResponseEntity.ok(response);
     }
 
-    @GetMapping("/info")
-    @Operation(summary = "유저정보조회", description = "현재 로그인 중인 유저의 상세 정보를 조회한다 <br> [헤더 Bearer: Access토큰 필요] <br> 토큰을 통해 유저정보를 조회한다")
-    public ResponseEntity<MessageUtils> getUserInfo() {
-        return ResponseEntity.ok().body(MessageUtils.success(userService.getUserInfo()));
+    @GetMapping("/{id}")
+    @Operation(summary = "보험 상품 조회", description = "특정 보험 상품 정보를 조회합니다.")
+    public ResponseEntity<InsuranceProductResponse> getInsuranceProduct(@PathVariable Long id) {
+        InsuranceProductResponse response = insuranceProductService.getInsuranceProductById(id);
+        return ResponseEntity.ok(response);
     }
 
-
-    @GetMapping("/info/{userid}")
-    @Operation(summary = "유저정보조회", description = "user id로   유저의 상세 정보를 조회한다 <br> [헤더 Bearer: Access토큰 필요] <br> 토큰을 통해 유저정보를 조회한다")
-    public ResponseEntity<MessageUtils> getUserInfobyid(@PathVariable Long userid) {
-        return ResponseEntity.ok().body(MessageUtils.success(userService.getUserInfobyid(userid)));
-
-    }
-    @PatchMapping("")
-    @Operation(summary = "유저 정보 수정", description = "유저의 정보를 수정한다 <br> 현재는 닉네임만 ")
-    public ResponseEntity<MessageUtils> updateUserInfo(@RequestBody @Valid UserUpdateRequest userUpdateRequest) {
-        userService.updateCurrentUserInfo(userUpdateRequest);
-        return ResponseEntity.ok().body(MessageUtils.success());
+    @GetMapping
+    @Operation(summary = "모든 보험 상품 조회", description = "모든 보험 상품 정보를 조회합니다.")
+    public ResponseEntity<List<InsuranceProductResponse>> getAllInsuranceProducts() {
+        List<InsuranceProductResponse> responses = insuranceProductService.getAllInsuranceProducts();
+        return ResponseEntity.ok(responses);
     }
 
+    @PutMapping("/{id}")
+    @Operation(summary = "보험 상품 업데이트", description = "특정 보험 상품 정보를 업데이트합니다.")
+    public ResponseEntity<InsuranceProductResponse> updateInsuranceProduct(@PathVariable Long id, @Valid @RequestBody InsuranceProductRequest request) {
+        InsuranceProductResponse response = insuranceProductService.updateInsuranceProduct(id, request);
+        return ResponseEntity.ok(response);
+    }
 
-
-
-
+    @DeleteMapping("/{id}")
+    @Operation(summary = "보험 상품 삭제", description = "특정 보험 상품을 삭제합니다.")
+    public ResponseEntity<Void> deleteInsuranceProduct(@PathVariable Long id) {
+        insuranceProductService.deleteInsuranceProduct(id);
+        return ResponseEntity.noContent().build();
+    }
 }
