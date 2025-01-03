@@ -1,10 +1,10 @@
-package com.pjt.insurance.user.model.dto.response;
+package com.pjt.insurance.insuranceproduct.model.dto.response;
 
-import com.pjt.insurance.user.model.entity.MemberProfile;
-import jakarta.persistence.Column;
-import lombok.*;
-
-import java.time.LocalDate;
+import com.pjt.insurance.insuranceproduct.model.entity.MemberProfile;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @AllArgsConstructor
 @NoArgsConstructor
