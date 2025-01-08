@@ -1,5 +1,7 @@
 package com.pjt.insurance.insuranceproduct.service;
 
+import com.pjt.insurance.insuranceproduct.exception.InsuranceProductErrorCode;
+import com.pjt.insurance.insuranceproduct.exception.InsuranceProductException;
 import com.pjt.insurance.insuranceproduct.model.dto.request.InsuranceProductRequest; // 보험 상품 요청 DTO
 import com.pjt.insurance.insuranceproduct.model.dto.response.InsuranceProductResponse; // 보험 상품 응답 DTO
 import com.pjt.insurance.insuranceproduct.model.entity.InsuranceProduct;
@@ -7,6 +9,7 @@ import com.pjt.insurance.insuranceproduct.repository.InsuranceProductRepository;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.hibernate.InstantiationException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -34,7 +37,7 @@ public class InsuranceProductService {
 
     public InsuranceProductResponse getInsuranceProductById(Long id) {
         InsuranceProduct insuranceProduct = insuranceProductRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("보험 상품을 찾을 수 없습니다."));
+                .orElseThrow(() -> new InsuranceProductException(InsuranceProductErrorCode.NOT_EXISTS_POLICY));
         return mapToResponse(insuranceProduct);
     }
 
