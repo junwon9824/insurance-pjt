@@ -66,7 +66,7 @@ public class JwtUtils {
                 .claim("userId", userId )
                 .claim("authorities", authorityList)
                 .setIssuedAt(getIssuedAt())
-                .setExpiration(getExpiredTime(jwtProperties.getAccesstime()))
+                .setExpiration(getExpiredTime(System.currentTimeMillis()+jwtProperties.getAccesstime()))
                 .signWith(SignatureAlgorithm.HS256, accessSecretKey)
                 .compact();
     }
@@ -85,7 +85,7 @@ public class JwtUtils {
                 .claim("userId", userId )
                 .claim("authorities", authorityList)
                 .setIssuedAt(getIssuedAt())
-                .setExpiration(getExpiredTime(jwtProperties.getRefreshtime()))
+                .setExpiration(getExpiredTime(System.currentTimeMillis()+jwtProperties.getRefreshtime()))
                 .signWith(SignatureAlgorithm.HS256, refreshSecretKey)
                 .compact();
     }
