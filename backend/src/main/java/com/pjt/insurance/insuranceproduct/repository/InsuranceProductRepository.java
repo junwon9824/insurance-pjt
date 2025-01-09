@@ -8,6 +8,5 @@ import java.util.Optional;
 
 @Repository
 public interface InsuranceProductRepository extends JpaRepository<InsuranceProduct,Long> {
-    Optional<InsuranceProduct> findByEmail(String email);
 
 }

@@ -56,4 +56,5 @@ public class InsuranceProductController {
         insuranceProductService.deleteInsuranceProduct(id);
         return ResponseEntity.noContent().build();
     }
+
 }
