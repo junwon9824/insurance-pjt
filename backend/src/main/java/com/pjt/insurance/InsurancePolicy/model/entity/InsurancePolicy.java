@@ -1,6 +1,7 @@
 package com.pjt.insurance.InsurancePolicy.model.entity;
 
 import com.pjt.insurance.insuranceproduct.model.entity.InsuranceProduct;
+import com.pjt.insurance.user.model.entity.MemberProfile;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -25,8 +26,9 @@ public class InsurancePolicy {
     @JoinColumn(name = "product_id", nullable = false)
     private InsuranceProduct insuranceProduct; // 보험 상품과의 관계
 
-    @Column(name = "subscriber_id", nullable = false)
-    private Long subscriberId; // 가입자 ID (MemberProfile ID)
+    @ManyToOne
+    @JoinColumn(name = "member_profile_id") // 외래 키 설정
+    private MemberProfile memberProfile; // 관련 회원 프로필
 
     @Column(name = "start_date", nullable = false)
     private LocalDate startDate; // 계약 시작일

@@ -1,5 +1,6 @@
 package com.pjt.insurance.user.model.entity;
 
+import com.pjt.insurance.InsurancePolicy.model.entity.InsurancePolicy;
 import com.pjt.insurance.insuranceproduct.model.entity.InsuranceProduct;
 import com.pjt.insurance.user.model.dto.response.UserResponse;
 import jakarta.persistence.*;
@@ -57,7 +58,7 @@ public class MemberProfile implements UserDetails {
 
 
     @OneToMany(mappedBy = "memberProfile", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private List<InsuranceProduct> insuranceProducts; // 사용자가 가입한 보험 상품 목록
+    private List<InsurancePolicy> insurancePolicies; // 사용자가 가입한 보험 상품 계약 목록
 
     // 메서드 설정
 

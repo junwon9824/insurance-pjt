@@ -6,7 +6,7 @@ import org.springframework.http.HttpStatus;
 
 @Getter
 @AllArgsConstructor
-public enum InsuranceProductErrorCode {
+public enum InsurancePolicyErrorCode {
     NOT_EXISTS_POLICY("존재하지 않는 보험 상품입니다.", HttpStatus.BAD_REQUEST),
     ALREADY_EXISTS_POLICY("이미 등록된 보험 상품입니다.", HttpStatus.BAD_REQUEST),
     ACCESS_DENIED("보험 상품에 대한 접근 권한이 없습니다.", HttpStatus.FORBIDDEN),

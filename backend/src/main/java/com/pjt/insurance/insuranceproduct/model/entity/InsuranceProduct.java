@@ -1,10 +1,11 @@
 package com.pjt.insurance.insuranceproduct.model.entity;
 
-import com.pjt.insurance.user.model.entity.MemberProfile;
+import com.pjt.insurance.InsurancePolicy.model.entity.InsurancePolicy;
 import jakarta.persistence.*;
 import lombok.*;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -32,10 +33,8 @@ public class InsuranceProduct {
     @Column(name = "status", length = 20)
     private String status; // 보험 상태 (예: 활성화, 만료 등)
 
-    @ManyToOne
-    @JoinColumn(name = "member_profile_id") // 외래 키 설정
-    private MemberProfile memberProfile; // 관련 회원 프로필
-
+    @OneToMany(mappedBy = "insuranceProduct", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<InsurancePolicy> policies; // 이 보험 상품에 속한 보험 계약 목록
 
     // 추가 필드 및 메서드를 여기에 추가할 수 있습니다.
 }
