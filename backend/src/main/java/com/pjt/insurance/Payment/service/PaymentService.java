@@ -1,17 +1,20 @@
 package com.pjt.insurance.Payment.service;
 
+import com.pjt.insurance.InsurancePolicy.model.entity.InsurancePolicy;
+import com.pjt.insurance.InsurancePolicy.repository.InsurancePolicyRepository;
 import com.pjt.insurance.Payment.exception.PaymentErrorCode;
 import com.pjt.insurance.Payment.exception.PaymentException;
 import com.pjt.insurance.Payment.model.dto.request.PaymentRequest;
 import com.pjt.insurance.Payment.model.dto.response.PaymentResponse;
 import com.pjt.insurance.Payment.model.entity.Payment;
 import com.pjt.insurance.Payment.repository.PaymentRepository;
-import com.pjt.insurance.Policy.repository.PolicyRepository;
+import com.pjt.insurance.insuranceproduct.exception.InsuranceProductErrorCode;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Slf4j
@@ -20,13 +23,13 @@ import java.util.List;
 public class PaymentService {
 
     private final PaymentRepository paymentRepository;
-    private final PolicyRepository policyRepository; // 정책 리포지토리 추가
+    private final InsurancePolicyRepository policyRepository; // 정책 리포지토리 추가
 
     @Transactional
     public PaymentResponse createPayment(PaymentRequest request) {
         // 정책이 존재하는지 확인
         var policy = policyRepository.findById(request.getPolicyId())
-                .orElseThrow(() -> new PaymentException(PaymentErrorCode.NOT_EXISTS_POLICY));
+                .orElseThrow(() -> new PaymentException(PaymentErrorCode.NOT_EXISTS_PAYMENT));
 
         Payment payment = Payment.builder()
                 .policy(policy)

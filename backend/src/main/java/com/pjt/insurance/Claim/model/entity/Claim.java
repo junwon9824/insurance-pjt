@@ -1,4 +1,4 @@
-package com.pjt.insurance.Payment.model.entity;
+package com.pjt.insurance.Claim.model.entity;
 
 import com.pjt.insurance.InsurancePolicy.model.entity.InsurancePolicy;
 import jakarta.persistence.*;
@@ -12,23 +12,22 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @Builder
 @Entity
-@Table(name = "payments")
-public class Payment {
+@Table(name = "claims") // 테이블 이름 변경
+public class Claim {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id; // 결제 ID
+    private Long id; // 청구 ID
 
-    @ManyToOne(fetch = FetchType.LAZY) // 결제가 특정 정책에 속함
+    @ManyToOne(fetch = FetchType.LAZY) // 청구가 특정 정책에 속함
     @JoinColumn(name = "policy_id", nullable = false) // 외래 키 설정
-    private InsurancePolicy policy; // 결제와 관련된 보험 정책
-
-
-    @Column(nullable = false)
-    private Double amount; // 결제 금액
+    private InsurancePolicy policy; // 청구와 관련된 보험 정책
 
     @Column(nullable = false)
-    private String status; // 결제 상태 (예: "PENDING", "COMPLETED", "FAILED")
+    private Double amount; // 청구 금액
+
+    @Column(nullable = false)
+    private String status; // 청구 상태 (예: "PENDING", "APPROVED", "DENIED")
 
     @Column(name = "created_at", updatable = false)
     private LocalDateTime createdAt; // 생성일
