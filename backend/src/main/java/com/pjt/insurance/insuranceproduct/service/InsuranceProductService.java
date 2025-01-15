@@ -37,7 +37,7 @@ public class InsuranceProductService {
 
     public InsuranceProductResponse getInsuranceProductById(Long id) {
         InsuranceProduct insuranceProduct = insuranceProductRepository.findById(id)
-                .orElseThrow(() -> new InsuranceProductException(InsuranceProductErrorCode.NOT_EXISTS_POLICY));
+                .orElseThrow(() -> new InsuranceProductException(InsuranceProductErrorCode.NOT_EXISTS_PRODUCT));
         return mapToResponse(insuranceProduct);
     }
 
