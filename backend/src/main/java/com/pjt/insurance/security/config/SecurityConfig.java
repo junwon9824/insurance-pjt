@@ -58,12 +58,14 @@ public class SecurityConfig {
                                 "/error",
                                 "/oauth2/**",
 //                                "/login/**",
-
                                 "/v1/auth/login",
                                 "/v1/users/register",
                                 "/v1/file/upload",
                                 "/swagger-ui/**",
+                                "swagger-ui**",
                                 "/v3/api-docs/**",
+
+                                "/v3/api-docs**",
                                 "/swagger-resources/**",
                                 "/ws",
                                 "/v1/noti/send",
