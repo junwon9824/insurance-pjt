@@ -5,6 +5,7 @@ import io.swagger.v3.oas.models.OpenAPI;
 import io.swagger.v3.oas.models.info.Info;
 import io.swagger.v3.oas.models.info.Contact;
 import io.swagger.v3.oas.models.info.License;
+import org.springdoc.core.models.GroupedOpenApi;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -13,15 +14,10 @@ public class SwaggerConfig {
     @Bean
     public OpenAPI openAPI() {
         return new OpenAPI()
-                .components(new Components())
-                .info(apiInfo());
+                .info(info);
     }
 
-    private Info apiInfo() {
-        return new Info()
-                .title("Insurance API 명세")
-                .description("Insurance REST API 명세서")
-                .version("0.0.1");
+    Info info = new Info().title("Swagger Test").version("0.0.1").description(
+            "<h3>Swagger test</h3>");
 
-    }
 }

@@ -37,10 +37,18 @@ public class InsurancePolicyService {
     public InsurancePolicyResponse createInsurancePolicy(InsurancePolicyRequest request) {
 
         long memberid = request.getMemberId();
-        MemberProfile memberProfile = memberRepository.findById(memberid).orElseThrow(() -> new UserException(UserErrorCode.NOT_EXISTS_USER) );
+        MemberProfile memberProfile = memberRepository.findById(memberid).orElseThrow(() -> new UserException(UserErrorCode.NOT_EXISTS_USER));
 
-        InsuranceProduct insuranceProduct = insuranceProductRepository.findById( request.getProductId()).orElseThrow(()
+        InsuranceProduct insuranceProduct = insuranceProductRepository.findById(request.getProductId()).orElseThrow(()
                 -> new InsuranceProductException(InsuranceProductErrorCode.NOT_EXISTS_PRODUCT));
+
+        // 동일한 상품에 대한 기존 정책 조회
+        InsurancePolicy existingPolicy = insurancePolicyRepository.findByMemberProfileAndInsuranceProduct(memberProfile, insuranceProduct);
+
+        if (existingPolicy != null) {
+            // 기존 정책이 존재하면 에러 출력
+            throw new InsuranceProductException(InsuranceProductErrorCode.ALREADY_EXISTS_PRODUCT);
+        }
 
         InsurancePolicy policy = InsurancePolicy.builder()
                 .memberProfile(memberProfile) // 실제 MemberProfile 객체로 변경
