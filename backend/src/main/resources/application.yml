@@ -1,5 +1,13 @@
 spring:
-
+  springdoc:
+    packages-to-scan: com.pjt.insurance
+    default-consumes-media-type: application/json;charset=UTF-8
+    default-produces-media-type: application/json;charset=UTF-8
+    swagger-ui:
+      path: /
+      disable-swagger-default-url: true
+      display-request-duration: true
+      operations-sorter: alpha
 #  springdoc:
 #  writer-with-default-pretty-printer: true
 #  api-docs:
