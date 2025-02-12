@@ -1,13 +1,16 @@
+import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 
-function App() {
+interface AppProps {} // 빈 인터페이스 (props가 없다면)
+
+const App: React.FC<AppProps> = () => {
   return (
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
-          Edit <code>src/App.js</code> and save to reload.
+          Edit <code>src/App.tsx</code> and save to reload. {/* 파일명 변경 */}
         </p>
         <a
           className="App-link"
@@ -20,6 +23,6 @@ function App() {
       </header>
     </div>
   );
-}
+};
 
 export default App;
