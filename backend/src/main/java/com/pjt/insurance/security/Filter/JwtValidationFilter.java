@@ -42,6 +42,14 @@ public class JwtValidationFilter extends OncePerRequestFilter {
         // 코드 리뷰 버전
         String[] list = StringUtils.split(authorizationHeader, BEARER_PREFIX);
 
+        String path = request.getServletPath();
+
+        // 특정 경로에 대해서는 JWT 검증을 건너뜁니다.
+        if (path.startsWith("/v3/api-docs")) {
+            filterChain.doFilter(request, response); // JWT 검증 없이 다음 필터로 이동
+            return;
+        }
+
         //authorizationHeader 가 null 이 아니고 authorizationHeader에 앞에 BEARER_PREFIX 가 있을 경우만 accessToken 값 있음, 아니면 null
         String accessToken = (list != null && list.length == 2 && list[0].isEmpty()) ? list[1] : null;
 
