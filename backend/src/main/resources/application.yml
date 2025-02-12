@@ -20,7 +20,7 @@ spring:
 #    display-request-duration: true
 
   datasource:
-    url: jdbc:mysql://localhost:3306/insurance?useSSL=false&allowPublicKeyRetrieval=true
+    url: jdbc:mysql://158.101.244.190:3306/insurance?useSSL=false&allowPublicKeyRetrieval=true
     username: root
     password: ssafy
     driver-class-name: com.mysql.cj.jdbc.Driver  # 드라이버 클래스 이름 명시
