@@ -124,7 +124,7 @@ const MainExchange = () => {
 
   return (
     <MainBox>
-      <Text>나의 반려작물의 모든 것, 풀러팅에서 함께</Text>
+      <Text> 00보험</Text>
       <LogoAndTextContainer>
         <Character>
           <img src={pullleft} alt="" />
